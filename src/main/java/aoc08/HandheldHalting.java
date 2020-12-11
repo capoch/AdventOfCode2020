@@ -5,7 +5,6 @@ import main.java.shared.GameConsole;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class HandheldHalting {
     static List<Integer> getActionLocations(GameConsole console, String action) {
@@ -22,8 +21,6 @@ public class HandheldHalting {
         List<Integer> jmpLocations = HandheldHalting.getActionLocations(console, "jmp");
         List<Integer> nopLocations = HandheldHalting.getActionLocations(console, "nop");
 
-        jmpLocations = jmpLocations.stream().filter(a -> a != 7 && a != 162 && a != 304 && a != 615).collect(Collectors.toList());
-
         for(int i = 0; i < jmpLocations.size(); i++) {
             List<String> program = console.getProgram();
             int targetIndex = jmpLocations.get(i);
@@ -33,7 +30,7 @@ public class HandheldHalting {
             if(console.run() == 0) {
                 return console.getAccumulator();
             }
-            console.setProgram(cachedProgram);
+            console.setProgram(new ArrayList<>(cachedProgram));
         }
 
         for(int i = 0; i < nopLocations.size(); i++) {
@@ -45,14 +42,14 @@ public class HandheldHalting {
             if(console.run() == 0) {
                 return console.getAccumulator();
             }
-            console.setProgram(cachedProgram);
+            console.setProgram(new ArrayList<>(cachedProgram));
         }
         return null;
     }
 
     public static void main(String[] args) throws IOException {
         GameConsole console = new GameConsole();
-        console.toggleDebug();
+        //console.toggleDebug();
         console.loadProgram("resources/input08.txt");
         console.run();
         System.out.println("Part One: " + console.getAccumulator());

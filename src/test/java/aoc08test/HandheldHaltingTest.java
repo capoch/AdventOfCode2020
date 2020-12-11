@@ -1,4 +1,4 @@
-package test.java.aoc09test;
+package test.java.aoc08test;
 
 import main.java.aoc08.HandheldHalting;
 import main.java.shared.GameConsole;
@@ -12,8 +12,8 @@ public class HandheldHaltingTest {
     static GameConsole console = new GameConsole();
     @BeforeAll
     public static void setup() throws IOException {
-        console.loadProgram("resources/test09.txt");
-        console.toggleDebug();
+        console.loadProgram("resources/test08.txt");
+        //console.toggleDebug();
     }
 
     @Test

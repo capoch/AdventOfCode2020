@@ -57,7 +57,7 @@ public class GameConsole {
     }
 
     public int run() {
-        if(debug) {System.out.println("Starting Programm execution");}
+        if(debug) {System.out.println("Starting Program execution");}
         accumulator = 0;
         programExecution = 0;
         running = true;
@@ -89,6 +89,8 @@ public class GameConsole {
                 System.out.println("Program terminated successfully. Accumulator: " + accumulator);
                 return 0;
             }
+
+
         }
         return -1;
     }
