@@ -11,12 +11,12 @@ public class SeatingSystemTest {
     @Test
     public void TestPartOne() throws IOException {
         SeatingSystem.getSeatPlan("resources/test11.txt");
-        Assertions.assertEquals(37, SeatingSystem.stableStateCount());
+        Assertions.assertEquals(37, SeatingSystem.stableStateCount(false));
     }
 
     @Test
     public void TestPartTwo() throws IOException {
         SeatingSystem.getSeatPlan("resources/test11.txt");
-        Assertions.assertEquals(26, SeatingSystem.stableStateCountLineOfSight());
+        Assertions.assertEquals(26, SeatingSystem.stableStateCount(true));
     }
 }
